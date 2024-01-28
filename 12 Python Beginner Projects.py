@@ -12,3 +12,13 @@
 # 12. markov Chain Composer
 
 
+
+# 1 Madlib
+adjective = input("Write an adjective: ")
+Your_Name = input("Tell me your name: ")
+Favourite_Animal = input("Which animal is most favourite one: ")
+
+madlib = f"Computer programming is very {adjective}. {Your_Name} wants to write code everyday.\
+ Stay cool and be a {Favourite_Animal}. I love you guys 5k times. Have Fun!"
+ 
+print(madlib)
