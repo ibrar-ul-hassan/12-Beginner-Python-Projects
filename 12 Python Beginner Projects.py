@@ -24,18 +24,38 @@
 # print(madlib)
 
 
-# 2 Guess the number (Computer)
+# # 2 Guess the number (Computer)
+# import random
+
+# def guess(x):
+#     random_number = random.randint(1, x)
+#     guess = 0
+#     while guess != random_number:
+#         guess = int(input(f"Guess a number between 1 and {x}: "))
+#         if guess > random_number:
+#             print("Sorry, guess again. Too High!")
+#         elif guess < random_number:
+#             print("Sorry, guess again. Too Low!")
+#     print(f"Yahoo! You have guessed the right number {random_number}. Congrats")        
+
+# guess(10)
+
+# 3 Guess the number (User)
 import random
 
-def guess(x):
-    random_number = random.randint(1, x)
-    guess = 0
-    while guess != random_number:
-        guess = int(input(f"Guess a number between 1 and {x}: "))
-        if guess > random_number:
-            print("Sorry, guess again. Too High!")
-        elif guess < random_number:
-            print("Sorry, guess again. Too Low!")
-    print(f"Yahoo! You have guessed the right number {random_number}. Congrats")        
+def guess_number(x):
+    low = 1
+    high = x
+    feedback = ''
+    while feedback != 'c'and low!=high:
+        guess = random.randint(low, high)
+        feedback = input(f"\nIf {guess} too low or too high? \n\nwrite (h) if it is too high.\
+                          \nIf it is Low, write (l). \nIf it is correct, write (c) :")
+        if feedback == 'h':
+            high = guess - 1
+        elif feedback == 'l':
+            low = guess + 1
 
-guess(10)
+    print(f"You have guessed the number {feedback}")
+
+guess_number(30)
