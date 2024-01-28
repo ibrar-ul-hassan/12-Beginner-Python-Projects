@@ -40,22 +40,46 @@
 
 # guess(10)
 
-# 3 Guess the number (User)
+
+
+# # 3 Guess the number (User)
+# import random
+
+# def guess_number(x):
+#     low = 1
+#     high = x
+#     feedback = ''
+#     while feedback != 'c'and low!=high:
+#         guess = random.randint(low, high)
+#         feedback = input(f"\nIf {guess} too low or too high? \n\nwrite (h) if it is too high.\
+#                           \nIf it is Low, write (l). \nIf it is correct, write (c) :")
+#         if feedback == 'h':
+#             high = guess - 1
+#         elif feedback == 'l':
+#             low = guess + 1
+
+#     print(f"You have guessed the number {feedback}")
+
+# guess_number(30)
+
+
+
+
+# 4. Rock Paper Scissors
 import random
 
-def guess_number(x):
-    low = 1
-    high = x
-    feedback = ''
-    while feedback != 'c'and low!=high:
-        guess = random.randint(low, high)
-        feedback = input(f"\nIf {guess} too low or too high? \n\nwrite (h) if it is too high.\
-                          \nIf it is Low, write (l). \nIf it is correct, write (c) :")
-        if feedback == 'h':
-            high = guess - 1
-        elif feedback == 'l':
-            low = guess + 1
+def rock_papaer_scissors():
+    user = input("Chosse one. For paper (p), For Rock (r), and For Scissor (s) :")
+    Computer = random.choice(['r','p','s'])
 
-    print(f"You have guessed the number {feedback}")
+    if user == Computer:
+        print("match Tie!!")
 
-guess_number(30)
+    # Winning Condition: r > s, s > p , p > r
+    if (user == 'r' and Computer == 's') or (user == 's' and Computer == 'p') or \
+    (user == 'p' and Computer == 'r'):
+        print("You Won!!")
+    
+    return "You Lost!"
+
+rock_papaer_scissors()
