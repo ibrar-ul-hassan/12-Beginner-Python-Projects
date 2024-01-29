@@ -65,21 +65,77 @@
 
 
 
-# 4. Rock Paper Scissors
-import random
+# # 4. Rock Paper Scissors
+# import random
 
-def rock_papaer_scissors():
-    user = input("Chosse one. For paper (p), For Rock (r), and For Scissor (s) :")
-    Computer = random.choice(['r','p','s'])
+# def rock_papaer_scissors():
+#     user = input("Chosse one. For paper (p), For Rock (r), and For Scissor (s) :")
+#     Computer = random.choice(['r','p','s'])
 
-    if user == Computer:
-        print("match Tie!!")
+#     if user == Computer:
+#         print("match Tie!!")
 
-    # Winning Condition: r > s, s > p , p > r
-    if (user == 'r' and Computer == 's') or (user == 's' and Computer == 'p') or \
-    (user == 'p' and Computer == 'r'):
-        print("You Won!!")
+#     # Winning Condition: r > s, s > p , p > r
+#     if (user == 'r' and Computer == 's') or (user == 's' and Computer == 'p') or \
+#     (user == 'p' and Computer == 'r'):
+#         print("You Won!!")
     
-    return "You Lost!"
+#     return "You Lost!"
 
-rock_papaer_scissors()
+# rock_papaer_scissors()
+
+
+
+
+# 5. Hangman
+from words import words
+import random
+import string
+
+def get_valid_words(words):     # This function is used to process the data and clear it.
+    word = random.choice(words)         # randomly chooses something from the list
+    while "-" in word or " " in word:
+        word = random.choice(words)
+    
+    return word.upper()
+
+
+def hangman():      # The game starts from here.
+    word = get_valid_words(words)       # We have to initilize some variables
+    word_letters = set(word)
+    alphabet = set(string.ascii_uppercase)  # This is used to call alphabets and convert them into set plus uppercase
+    used_letters = set()
+
+    lives = 7
+
+    while len(word) > 0 and lives > 0:
+        print("You have used these letters: ", " ".join(used_letters))
+        word_list = [letter if letter in used_letters else "-" for letter in word]
+        print(f"You have {lives} lives remaining. You current word is: ", ' '.join(word_list))
+
+        user_letter = input("Guess a letter: ").upper()
+        if user_letter in alphabet - used_letters:
+            used_letters.add(user_letter)
+            if user_letter in word_letters:
+                word_letters.remove(user_letter)
+            else:
+                lives = lives - 1
+                print("Letter is not in word")    
+
+        elif user_letter in used_letters:
+            print("You have already used this letter")
+
+    if lives == 0:
+        print("You die!")
+    else:
+        print("You have guessed the", word, "!!")
+
+hangman()
+
+
+
+
+
+
+
+
